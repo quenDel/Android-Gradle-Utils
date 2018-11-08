@@ -1,0 +1,9 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "com.quendeltechfirm.paytmintegration",
+    "sha256_cert_fingerprints":
+    ["27:61:37:66:E5:EB:CC:37:22:7E:23:97:1B:59:68:A8:6F:8D:64:A7:BE:08:8E:75:0A:3B:D8:D6:81:B2:E6:0F"]
+  }
+}]
