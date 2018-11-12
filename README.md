@@ -1,8 +1,8 @@
 # Some important gradles
 
 **Add for Kotlin support**  
-`apply plugin: 'kotlin-kapt'    
-kapt { generateStubs = true }`  and use `kapt` place of `annotationProcessor(Java)`  
+`apply plugin: 'kotlin-kapt'`      
+`kapt { generateStubs = true }` and use `kapt` place of `annotationProcessor(Java)`  
 
 **Versions**  
 ``` 
