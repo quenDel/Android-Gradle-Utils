@@ -48,7 +48,7 @@ implementation "com.google.dagger:dagger-android:$daggerVersion"
 implementation "io.reactivex.rxjava2:rxjava:$rxJavaVersion"
 implementation "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion"  
 ```  
-** Rx Callbacks**  
+**Rx Callbacks**  
 ```
 // RxRelay
 implementation "com.jakewharton.rxrelay2:rxrelay:$project.rxRelayVersion"
