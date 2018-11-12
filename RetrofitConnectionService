@@ -1,0 +1,85 @@
+package com.bhagavad.gita.repositories.remote.networking
+
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
+
+import java.io.IOException
+
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import timber.log.Timber
+
+import com.bhagavad.gita.constatnts.Constant.Companion.API_BASE_URL
+import okhttp3.RequestBody
+import okhttp3.ResponseBody
+import retrofit2.Call
+import java.io.InterruptedIOException
+import java.net.SocketTimeoutException
+import java.util.concurrent.TimeoutException
+
+class RetrofitConnectionService {
+
+    private val retrofit: Retrofit
+
+    companion object {
+        private var instance: RemoteConnectionService? = null
+        @Synchronized
+        fun getInstance(): RemoteConnectionService {
+            if (instance == null) {
+                instance = RemoteConnectionService()
+            }
+            return instance!!
+        }
+    }
+
+    init {
+
+        val loggingInterceptor = HttpLoggingInterceptor()
+        loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
+
+        val httpClient = OkHttpClient.Builder()
+                .addInterceptor(loggingInterceptor)
+                .build()
+
+        val gson = GsonBuilder()
+                .excludeFieldsWithoutExposeAnnotation()
+                .create()
+
+        retrofit = Retrofit.Builder()
+                .client(httpClient)
+                .baseUrl(API_BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .build()
+    }
+
+
+    @Throws(IOException::class, RemoteException::class, SocketTimeoutException::class, InterruptedIOException::class)
+    fun downloadLessonData(lessonNo: Int?, authToken: String?): Response<ResponseBody> {
+        val service = retrofit.create(RemoteEndpoints::class.java)
+        // Remote call can be executed synchronously since the job calling it is already backgrounded.
+        val response = service.getLesson(lessonNo, authToken).execute()
+        if (response == null || !response.isSuccessful || response.errorBody() != null) {
+            throw RemoteException(response)
+        }
+        Timber.d("successful remote response: " + response.body())
+        return response
+    }
+}
+
+/*
+    @FormUrlEncoded
+    @POST(Constant.LOGIN)
+    fun login(@Field("mobile") mobile: String?,
+              @Field("password") password: String?): Call<ResponseBody>
+
+    @POST(Constant.SIGN_UP)
+    fun singUp(@Body param: RequestBody): Call<ResponseBody>
+
+    @GET(Constant.GET_PROFILE + "{user_id}" + ".json")
+    fun getProfile(@Path("user_id") user_id: Int?,
+                   @Query("auth_token") auth_token: String?): Call<ResponseBody>
+
+*/
