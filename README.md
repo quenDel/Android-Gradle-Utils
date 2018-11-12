@@ -32,3 +32,20 @@ implementation "android.arch.persistence.room:runtime:$lifecycle_version"
 implementation "android.arch.persistence.room:rxjava2:$lifecycle_version"
 annotationProcessor "android.arch.persistence.room:compiler:$lifecycle_version"
 ```  
+**Dagger core**
+```
+implementation "com.google.dagger:dagger:$daggerVersion"
+annotationProcessor "com.google.dagger:dagger-compiler:$daggerVersion"
+>Dagger Android
+annotationProcessor "com.google.dagger:dagger-android-processor:$daggerVersion"
+implementation "com.google.dagger:dagger-android-support:$daggerVersion"
+>if you are not using support library, include this instead
+implementation "com.google.dagger:dagger-android:$daggerVersion"
+```
+**ReactiveX**  
+```
+implementation "io.reactivex.rxjava2:rxjava:$rxJavaVersion"
+implementation "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion"
+```
+
+
