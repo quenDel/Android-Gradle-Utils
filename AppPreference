@@ -1,0 +1,71 @@
+package com.bhagavad.gita.util;
+
+import android.content.Context;
+import android.content.SharedPreferences;
+
+import static com.bhagavad.gita.constatnts.Constant.FETCH_TIME_STAMP_LOAD;
+import static com.bhagavad.gita.constatnts.Constant.FINAL_TEST_SUBMITION;
+import static com.bhagavad.gita.constatnts.Constant.IS_FINAL_TEST_UPLOAD;
+import static com.bhagavad.gita.constatnts.Constant.IS_LESSON_READY;
+import static com.bhagavad.gita.constatnts.Constant.IS_LOGIN;
+import static com.bhagavad.gita.constatnts.Constant.IS_TODAY_TASK_COMPLETED;
+import static com.bhagavad.gita.constatnts.Constant.LAST_DAY_PREF;
+import static com.bhagavad.gita.constatnts.Constant.USER_ID;
+
+public class AppPreference {
+    private static final String APP_PREFENCE = "preferences_GSP_EIGHT";
+    private SharedPreferences preferences;
+
+    public Context context;
+
+    public Context getContext() {
+        return context;
+    }
+
+    public void setContext(Context context) {
+        this.context = context;
+    }
+
+    public AppPreference(Context context) {
+        this.context = context;
+        preferences = context.getSharedPreferences(APP_PREFENCE, Context.MODE_PRIVATE);
+    }
+
+    public void setStringPreference(String key, String value) {
+        preferences.edit().putString(key, value).apply();
+    }
+
+    public String getStringPreference(String key) {
+        return preferences.getString(key, "");
+    }
+
+    public void setIntegerPreference(String key, int value) {
+        preferences.edit().putInt(key, value).apply();
+    }
+
+    public int getIntegerPreference(String key) {
+        return preferences.getInt(key, 0);
+    }
+
+    public void setLongPreference(String key, long value) {
+        preferences.edit().putLong(key, value).apply();
+    }
+
+    public long getLongPreference(String key) {
+        return preferences.getLong(key, 0L);
+    }
+
+    public void setBooleanPreference(String key, boolean value) {
+        preferences.edit().putBoolean(key, value).apply();
+    }
+
+    public boolean getBooleanPreference(String key) {
+        return preferences.getBoolean(key, false);
+    }
+
+    public void clearAllPreferences() {
+        preferences.edit().clear().apply();
+    }
+}
+
+
