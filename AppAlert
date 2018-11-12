@@ -1,0 +1,51 @@
+package com.bhagavad.gita.util
+
+import android.content.Context
+import android.content.DialogInterface
+import android.support.design.widget.Snackbar
+import android.support.v7.app.AlertDialog
+import android.view.View
+import android.widget.Toast
+
+class AppAlert {
+
+
+    companion object {
+        fun showToast(ctx: Context, msg: String) {
+            Toast.makeText(ctx, msg, Toast.LENGTH_SHORT).show()
+        }
+
+        fun showSnackBar(view: View, msg: String) {
+            Snackbar.make(view, msg, Snackbar.LENGTH_LONG).show()
+        }
+
+        fun showAlert(ctx: Context?, msg: String, title: String = "") {
+            ctx?.let {
+                var msgTitle = title
+                if (msgTitle == "") msgTitle = ctx.resources.getString(R.string.Error)
+
+                AlertDialog.Builder(it)
+                        .setTitle(msgTitle)
+                        .setMessage(msg)
+                        .setPositiveButton(ctx.resources.getString(R.string.ok), null)
+                        .create()
+                        .show()
+            }
+        }
+
+        fun showAlertWithAction(ctx: Context, title: String, msg: String, cancelable: Boolean,
+                                positiveString: String, nagativeString: String,
+                                positiveAction: DialogInterface.OnClickListener,
+                                negativeAction: DialogInterface.OnClickListener?) {
+            AlertDialog.Builder(ctx)
+                    .setTitle(title)
+                    .setMessage(msg)
+                    .setCancelable(cancelable)
+                    .setPositiveButton(positiveString, positiveAction)
+                    .setNegativeButton(nagativeString, negativeAction)
+                    .create()
+                    .show()
+        }
+
+    }
+}
