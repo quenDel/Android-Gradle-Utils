@@ -3,17 +3,8 @@ package com.bhagavad.gita.util;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import static com.bhagavad.gita.constatnts.Constant.FETCH_TIME_STAMP_LOAD;
-import static com.bhagavad.gita.constatnts.Constant.FINAL_TEST_SUBMITION;
-import static com.bhagavad.gita.constatnts.Constant.IS_FINAL_TEST_UPLOAD;
-import static com.bhagavad.gita.constatnts.Constant.IS_LESSON_READY;
-import static com.bhagavad.gita.constatnts.Constant.IS_LOGIN;
-import static com.bhagavad.gita.constatnts.Constant.IS_TODAY_TASK_COMPLETED;
-import static com.bhagavad.gita.constatnts.Constant.LAST_DAY_PREF;
-import static com.bhagavad.gita.constatnts.Constant.USER_ID;
-
 public class AppPreference {
-    private static final String APP_PREFENCE = "preferences_GSP_EIGHT";
+    private static final String APP_PREFENCE = "preferences";
     private SharedPreferences preferences;
 
     public Context context;
