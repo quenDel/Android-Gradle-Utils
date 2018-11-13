@@ -1,7 +1,7 @@
 # Some important gradles
 
 **Add for Kotlin support**  
-`apply plugin: 'kotlin-kapt'`      
+`apply plugin: 'kotlin-kapt'`  
 `kapt { generateStubs = true }` and use `kapt` place of `annotationProcessor(Java)`  
 
 **Versions**  
@@ -64,7 +64,15 @@ implementation "com.birbit:android-priority-jobqueue:$priorityJobQueueVersion"
 
 //GCM Network Manager
 implementation "com.google.android.gms:play-services-gcm:$playServicesVersion"
+``` 
+**Job Scheduler**
+```
+// Framework JobScheduler	from API-21
+
+// Firebase JobDispatcher	from API-14
+Githu sample [Firebase-JobDispatcher](https://github.com/firebase/firebase-jobdispatcher-android)
 ```  
+
 **Retrofit**  
 ```
 implementation "com.squareup.retrofit2:retrofit:$project.retrofitVersion"
