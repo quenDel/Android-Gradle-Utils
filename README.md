@@ -65,11 +65,12 @@ implementation "com.birbit:android-priority-jobqueue:$priorityJobQueueVersion"
 //GCM Network Manager
 implementation "com.google.android.gms:play-services-gcm:$playServicesVersion"
 ``` 
+
 **Job Scheduler**  
-// Framework JobScheduler	from API-21
-Get example [Job Scheduler and Foreground Service](https://github.com/quenDel/JobScheduler-ForegroundService)
-// Firebase JobDispatcher	from API-14
-official Github sample [Firebase-JobDispatcher](https://github.com/firebase/firebase-jobdispatcher-android)    
+`Framework JobScheduler	from API-21`  
+Get example [Job Scheduler and Foreground Service](https://github.com/quenDel/JobScheduler-ForegroundService)  
+`Firebase JobDispatcher	from API-14`  
+Official Github sample [Firebase-JobDispatcher](https://github.com/firebase/firebase-jobdispatcher-android)  
 
 **Retrofit**  
 ```
