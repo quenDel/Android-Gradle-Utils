@@ -1,5 +1,8 @@
-package com.bhagavad.gita.repositories.remote.networking
+package com.quendeltechfirm.paypalbraintreetest
 
+
+import android.os.RemoteException
+import android.util.Log
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 
@@ -10,9 +13,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import timber.log.Timber
 
-import com.bhagavad.gita.constatnts.Constant.Companion.API_BASE_URL
 import okhttp3.RequestBody
 import okhttp3.ResponseBody
 import retrofit2.Call
@@ -25,11 +26,11 @@ class RetrofitConnectionService {
     private val retrofit: Retrofit
 
     companion object {
-        private var instance: RemoteConnectionService? = null
+        private var instance: RetrofitConnectionService? = null
         @Synchronized
-        fun getInstance(): RemoteConnectionService {
+        fun getInstance(): RetrofitConnectionService {
             if (instance == null) {
-                instance = RemoteConnectionService()
+                instance = RetrofitConnectionService()
             }
             return instance!!
         }
@@ -41,18 +42,18 @@ class RetrofitConnectionService {
         loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
 
         val httpClient = OkHttpClient.Builder()
-                .addInterceptor(loggingInterceptor)
-                .build()
+            .addInterceptor(loggingInterceptor)
+            .build()
 
         val gson = GsonBuilder()
-                .excludeFieldsWithoutExposeAnnotation()
-                .create()
+            .excludeFieldsWithoutExposeAnnotation()
+            .create()
 
         retrofit = Retrofit.Builder()
-                .client(httpClient)
-                .baseUrl(API_BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create(gson))
-                .build()
+            .client(httpClient)
+            .baseUrl(API_BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create(gson))
+            .build()
     }
 
 
@@ -64,7 +65,7 @@ class RetrofitConnectionService {
         if (response == null || !response.isSuccessful || response.errorBody() != null) {
             throw RemoteException(response)
         }
-        Timber.d("successful remote response: " + response.body())
+        Log.d("successful remote response: " + response.body())
         return response
     }
 }
