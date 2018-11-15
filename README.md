@@ -51,10 +51,10 @@ implementation "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion"
 **Rx Callbacks**  
 ```
 // RxRelay
-implementation "com.jakewharton.rxrelay2:rxrelay:$project.rxRelayVersion"
+implementation "com.jakewharton.rxrelay2:rxrelay:$rxRelayVersion"
 
 // RxLint
-implementation "nl.littlerobots.rxlint:rxlint:$project.rxLintVersion"
+implementation "nl.littlerobots.rxlint:rxlint:$rxLintVersion"
 ```  
 
 **Android Priority Job Queue library for your background tasks**  
@@ -74,14 +74,14 @@ Official Github sample [Firebase-JobDispatcher](https://github.com/firebase/fire
 
 **Retrofit**  
 ```
-implementation "com.squareup.retrofit2:retrofit:$project.retrofitVersion"
+implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
 
 // GSON Converter
-implementation "com.squareup.retrofit2:converter-gson:$project.retrofitVersion"
+implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
 
 // OkHttp Logging Interceptor
-implementation "com.squareup.okhttp3:okhttp:$project.okHttpVersion"
-implementation "com.squareup.okhttp3:logging-interceptor:$project.okHttpVersion"
+implementation "com.squareup.okhttp3:okhttp:$okHttpVersion"
+implementation "com.squareup.okhttp3:logging-interceptor:$okHttpVersion"
 ```  
 **Google and Firebase**
 ```
